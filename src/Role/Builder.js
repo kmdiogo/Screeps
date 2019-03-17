@@ -1,4 +1,4 @@
-var roleMover = require('Role.Mover');
+var roleMover = require('./Mover');
 var roleBuilder = {
     /** @param {Creep} creep **/
     run(creep)

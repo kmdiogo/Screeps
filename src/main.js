@@ -1,13 +1,13 @@
-var roleHarvester = require("Role.Harvester");
-var roleUpgrader = require('Role.Upgrader');
-var roleBuilder = require('Role.Builder');
-var roleMover = require('Role.Mover');
-var roleRepairer = require('Role.Repairer');
-var roleScout = require('Role.Scout');
+var roleHarvester = require("./Role/Harvester");
+var roleUpgrader = require('/Role/Upgrader');
+var roleBuilder = require('./Role/Builder');
+var roleMover = require('./Role/Mover');
+var roleRepairer = require('./Role/Repairer');
+var roleScout = require('./Role/Scout');
 var UI = require('UI');
-var Helpers = require('Util.Helpers');
-var roleTower = require('Role.Tower');
-var RoomTasks = require('Room.Tasks');
+var Helpers = require('./Util/Helpers');
+var roleTower = require('./Role/Tower');
+var RoomTasks = require('./Room/Tasks');
 module.exports.loop = function () {
     RoomTasks.ConstructionSiteHandler();
     //-------Delete memory of deceased creeps------

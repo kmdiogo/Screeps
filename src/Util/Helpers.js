@@ -6,7 +6,6 @@
  * var mod = require('Helper Functions');
  * mod.thing == 'a thing'; // true
  */
-
 module.exports = {
     FindClosestStructure: function(obj, structureTypes) {
         if (structureTypes.constructor != Array) {

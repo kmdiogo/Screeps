@@ -1,4 +1,4 @@
-var Helpers = require('Util.Helpers');
+var Helpers = require('./Util/Helpers');
 var CONSTANTS = require('CONSTANTS');
 module.exports = {
     loadUI: function() {
