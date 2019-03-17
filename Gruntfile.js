@@ -27,15 +27,15 @@ module.exports = function(grunt) {
         },
 
         shell: {
-            ScreepsFlatten: {
+            ScreepPack: {
                 options: {
                     stdout: true
                 },
-                command: "py ScreepsFlatten.py"
+                command: "py ScreepPack.py"
             }
         }
 
     });
 
-    grunt.registerTask('default',  ['shell:ScreepsFlatten', 'file_append:versioning']);
+    grunt.registerTask('default',  ['shell:ScreepPack', 'file_append:versioning']);
   };
