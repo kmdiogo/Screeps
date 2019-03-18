@@ -35,7 +35,7 @@ export default class Tower {
         let repairList = this.tower.pos.findInRange(FIND_STRUCTURES, 3, {
             filter: (structure) => {
                 return (
-                    (structure.structureType == STRUCTURE_RAMPART && structure.hits < 10000000 && structure.hits > 0)
+                    (structure.structureType == STRUCTURE_RAMPART && structure.hits < 2000000 && structure.hits > 0)
                 )
             }
         });

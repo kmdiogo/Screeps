@@ -39,7 +39,7 @@ export default {
                     }
                 }
                 else {
-                    Mover.run(creep)
+                    new Mover(creep).run();
                 }
             }
         }

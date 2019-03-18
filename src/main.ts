@@ -111,7 +111,7 @@ export const loop = ErrorMapper.wrapLoop(() => {
       Builder.run(creep);
     }
     if (creep.memory.role == 'mover') {
-      Mover.run(creep);
+      new Mover(creep).run();
     }
     if (creep.memory.role == 'repairer') {
       Repairer.run(creep);
