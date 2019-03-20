@@ -5,12 +5,12 @@ import RoomTasks from 'Room/Tasks'
 import Global from 'Global/Global'
 import CreepController from 'Controllers/CreepController'
 import SpawnController from 'Controllers/SpawnController'
-import { modifyPrototypes } from 'Prototypes/Prototypes'
+import PrototypeController from 'Controllers/PrototypeController'
 
 // When compiling TS to JS and bundling with rollup, the line numbers and file names in error messages change
 // This utility uses source maps to get the line numbers and file names of the original, TS source code
 export const loop = ErrorMapper.wrapLoop(() => {
-    modifyPrototypes();
+    PrototypeController.extendPrototypes();
 
     Global.CleanMemory();
 

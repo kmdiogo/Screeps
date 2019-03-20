@@ -10,6 +10,12 @@ interface Room {
   sources: Source[],
 }
 
+interface Source {
+  memory: {
+    workers: Number
+  }
+}
+
 interface Memory {
   uuid: number;
   log: any;

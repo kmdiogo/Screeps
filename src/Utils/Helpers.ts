@@ -30,6 +30,30 @@ export default {
         else {
             return _.filter(Game.creeps, (creep) => creepRoles.includes(creep.memory.role) && rooms.includes(creep.room.name));
         }
+    },
+
+    defineMemory(prototype: _Constructor<Object>) {
+        Object.defineProperty(prototype, 'memory', {
+            get: function () {
+                if (_.isUndefined(Memory.sources)) {
+                    Memory.sources = {};
+                }
+                if (!_.isObject(Memory.sources)) {
+                    return undefined;
+                }
+                return Memory.sources[this.id] = Memory.sources[this.id] || {};
+            },
+            set: function (value) {
+                if (_.isUndefined(Memory.sources)) {
+                    Memory.sources = {};
+                }
+                if (!_.isObject(Memory.sources)) {
+                    throw new Error('Could not set source memory');
+                }
+                Memory.sources[this.id] = value;
+            }
+        })
+
     }
 
 
