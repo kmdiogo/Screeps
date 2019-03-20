@@ -31,7 +31,7 @@ export default class Tower {
         return false;
     }
 
-    maintain() {
+    private maintain() {
         let repairList = this.tower.pos.findInRange(FIND_STRUCTURES, 3, {
             filter: (structure) => {
                 return (
@@ -42,6 +42,17 @@ export default class Tower {
         repairList = _.sortBy(repairList, wall => wall.hits);
         if (repairList.length > 0 && this.tower.energy > 500) {
             this.tower.repair(repairList[0]);
+        }
+    }
+
+    static runAll() {
+        for (let roomName in Game.rooms) {
+            let towers = <StructureTower[]>Game.rooms[roomName].find(FIND_MY_STRUCTURES, {
+                filter: (struct) => { return struct.structureType === STRUCTURE_TOWER }
+            });
+            towers.forEach((tower) => {
+                new Tower(tower).run();
+            })
         }
     }
 

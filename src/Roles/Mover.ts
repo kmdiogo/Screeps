@@ -23,7 +23,7 @@ export default class Mover {
         }
     }
 
-    StoreEnergyInSpawns() {
+    private StoreEnergyInSpawns() {
         let targets = this.creep.room.find(FIND_STRUCTURES, {
             filter: (structure) => {
                 return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
@@ -39,7 +39,7 @@ export default class Mover {
         return false;
     }
 
-    StoreEnergyInTowers() {
+    private StoreEnergyInTowers() {
         let towers = this.creep.room.find(FIND_STRUCTURES, {
             filter: (s) => s.structureType == STRUCTURE_TOWER && s.energy < s.energyCapacity
         });
@@ -52,7 +52,7 @@ export default class Mover {
         return false;
     }
 
-    StoreEnergyInStorage() {
+    private StoreEnergyInStorage() {
         let target = this.creep.pos.findClosestByPath(FIND_MY_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_STORAGE });
         /*let targets = creep.room.find(FIND_STRUCTURES, {
             filter: (s) => s.structureType == STRUCTURE_STORAGE
@@ -66,7 +66,7 @@ export default class Mover {
         return false;
     }
 
-    WithdrawEnergyFromContainer() {
+    private WithdrawEnergyFromContainer() {
         let targets = this.creep.room.find(FIND_STRUCTURES, {
             filter: (structure) => {
                 return (structure.structureType == STRUCTURE_CONTAINER && structure.store[RESOURCE_ENERGY] > 100)
@@ -81,7 +81,7 @@ export default class Mover {
         return false;
     }
 
-    WithdrawEnergyFromLink() {
+    private WithdrawEnergyFromLink() {
         let storageLink = this.creep.pos.findClosestByPath(FIND_STRUCTURES, { filter: (s) => s.structureType == STRUCTURE_LINK && s.energy > 400 });
         /*let upgraderLink = creep.room.find(FIND_STRUCTURES, {
             filter: (s) => (s.pos.findInRange(FIND_STRUCTURES, 1, {
@@ -97,7 +97,7 @@ export default class Mover {
         return false;
     }
 
-    WithdrawEnergyFromStorage() {
+    private WithdrawEnergyFromStorage() {
         let targets = this.creep.room.find(FIND_STRUCTURES, {
             filter: (structure) => structure.structureType == STRUCTURE_STORAGE
         });

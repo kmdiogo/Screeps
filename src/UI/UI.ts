@@ -1,8 +1,8 @@
 import Helpers from 'Utils/Helpers'
-
 import CONSTANTS from 'CONSTANTS'
-export default {
-    loadUI: function () {
+
+export default class UI {
+    static load() {
         let harvesters = Helpers.CreepList(['harvester']);
         let upgraders = Helpers.CreepList(['upgrader']);
         let builders = Helpers.CreepList(['builder']);
@@ -18,10 +18,14 @@ export default {
         new RoomVisual().text(`Builders: ${builders.length}`, 5, 3, { align: 'left', opacity: 0.8 });
         new RoomVisual().text(`Repairers: ${repairers.length} / ${CONSTANTS.MAX_REPAIRERS}`, 5, 4, { align: 'left', opacity: 0.8 });
         new RoomVisual().text(`Energy: ${Game.spawns.Spawn1.room.energyAvailable} / ${Game.spawns.Spawn1.room.energyCapacityAvailable}`, 5, 5, { align: 'left', opacity: 0.8 });
-    },
 
-    showSpawning() {
+        this.showSpawning();
+    }
+
+
+    static showSpawning() {
         if (!Game.spawns['Spawn1'].spawning) return;
+
         var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning!.name];
         Game.spawns['Spawn1']!.room.visual.text(
             `🛠️ ${spawningCreep.memory.role}`,
