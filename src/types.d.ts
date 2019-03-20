@@ -6,6 +6,10 @@ interface CreepMemory {
   building: boolean
 }
 
+interface Room {
+  sources: Source[],
+}
+
 interface Memory {
   uuid: number;
   log: any;
