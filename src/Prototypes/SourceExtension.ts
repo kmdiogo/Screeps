@@ -1,8 +1,8 @@
 import helpers from 'Utils/Helpers'
 export default class SourceExtension {
     static extend() {
-        //helpers.defineMemory(Source.prototype);
         Memory.sources = Memory.sources || {};
+        //helpers.defineMemory(Source.prototype);
         Object.defineProperty(Source.prototype, 'memory', {
             get: function () {
                 if (_.isUndefined(Memory.sources)) {
@@ -21,14 +21,17 @@ export default class SourceExtension {
                     throw new Error('Could not set source memory');
                 }
                 Memory.sources[this.id] = value;
-            }
+            },
+            enumerable: false,
+            configurable: true
         });
 
 
-        Object.defineProperty(Source.prototype.memory, 'workers', {
+        Object.defineProperty(Source.prototype.memory, "workers", {
             get: function () {
+                console.log("Worker getter called");
                 if (!this._workers) {
-                    if (!this.memory.workers) {
+                    if (!this.workers) {
                         this.memory.workers = 0;
                     }
                     this._workers = 0;
@@ -46,4 +49,6 @@ export default class SourceExtension {
             configurable: true
         });
     }
+
+
 }

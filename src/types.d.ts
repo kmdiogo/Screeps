@@ -12,7 +12,7 @@ interface Room {
 
 interface Source {
   memory: {
-    workers: Number
+    workers: number
   }
 }
 

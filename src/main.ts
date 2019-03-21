@@ -12,6 +12,11 @@ import PrototypeController from 'Controllers/PrototypeController'
 export const loop = ErrorMapper.wrapLoop(() => {
     PrototypeController.extendPrototypes();
 
+    /*let s = Game.rooms['W28N38'].find(FIND_SOURCES);
+    s.forEach(source => {
+        console.log(`Workers for source: ${source.id}:`, source.memory.workers);
+    });*/
+
     Global.CleanMemory();
 
     RoomTasks.ConstructionSiteHandler();
