@@ -16,6 +16,8 @@ export const loop = ErrorMapper.wrapLoop(() => {
 
   RoomTasks.ConstructionSiteHandler();
 
+  let sources = Game.rooms['W28N38'].find(FIND_SOURCES);
+
   Towers.runAll();
 
   //---------Linker--------------------------------

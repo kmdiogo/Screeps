@@ -2,15 +2,16 @@ import helpers from 'Utils/Helpers'
 export default class SourceExtension {
     static extend() {
         Memory.sources = Memory.sources || {};
-        if (!Source.prototype.memory)
-            helpers.defineMemory(Source.prototype);
+        helpers.defineMemory(Source.prototype);
 
         Object.defineProperty(Source.prototype, "workers", {
             get: function () {
-                if (!this._workers) {
-                    if (!this.memory.workers)
+                if (this._workers == undefined) {
+                    if (this.memory.workers == undefined) {
                         this.memory.workers = 0;
-                    this._workers = 0;
+                    }
+
+                    this._workers = this.memory.workers;
                 }
                 // return the locally stored value
                 return this._workers;
