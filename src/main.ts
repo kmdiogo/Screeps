@@ -10,31 +10,26 @@ import PrototypeController from 'Controllers/PrototypeController'
 // When compiling TS to JS and bundling with rollup, the line numbers and file names in error messages change
 // This utility uses source maps to get the line numbers and file names of the original, TS source code
 export const loop = ErrorMapper.wrapLoop(() => {
-    PrototypeController.extendPrototypes();
+  PrototypeController.extendPrototypes();
 
-    /*let s = Game.rooms['W28N38'].find(FIND_SOURCES);
-    s.forEach(source => {
-        console.log(`Workers for source: ${source.id}:`, source.memory.workers);
-    });*/
+  Global.CleanMemory();
 
-    Global.CleanMemory();
+  RoomTasks.ConstructionSiteHandler();
 
-    RoomTasks.ConstructionSiteHandler();
+  Towers.runAll();
 
-    Towers.runAll();
+  //---------Linker--------------------------------
+  const linkFrom = <StructureLink>Game.rooms['W28N38'].lookForAt('structure', 14, 9)[0];
+  let source = Game.rooms['W28N38'].find(FIND_SOURCES)[0];
+  const linkTo = <StructureLink>Game.rooms['W28N38'].lookForAt('structure', 19, 22)[0];
+  if (linkFrom.energy <= linkFrom.energyCapacity) {
+    linkFrom.transferEnergy(linkTo);
+  }
+  //-------------------------------------------------
 
-    //---------Linker--------------------------------
-    const linkFrom = <StructureLink>Game.rooms['W28N38'].lookForAt('structure', 14, 9)[0];
-    let source = Game.rooms['W28N38'].find(FIND_SOURCES)[0];
-    const linkTo = <StructureLink>Game.rooms['W28N38'].lookForAt('structure', 19, 22)[0];
-    if (linkFrom.energy <= linkFrom.energyCapacity) {
-        linkFrom.transferEnergy(linkTo);
-    }
-    //-------------------------------------------------
+  SpawnController.run();
 
-    SpawnController.run();
+  CreepController.run();
 
-    CreepController.run();
-
-    UI.load();
+  UI.load();
 });

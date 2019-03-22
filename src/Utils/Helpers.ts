@@ -32,7 +32,7 @@ export default {
         }
     },
 
-    defineMemory(prototype: _Constructor<Object>) {
+    defineMemory(prototype: any) {
         Object.defineProperty(prototype, 'memory', {
             get: function () {
                 if (_.isUndefined(Memory.sources)) {
